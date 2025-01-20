@@ -66,54 +66,49 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
 
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
-
+        backgroundColor: const Color.fromARGB(255, 54, 205, 69),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.accessibility_outlined), 
+            onPressed: () {  
+            },)],
          title: Text("My App"),
       ),
 
       
-       body:Wrap(
+      body:GridView.count(crossAxisCount: 3,
+       
+      children: [
+        Padding(padding: const EdgeInsets.all(5),
+        child: Container(color: Colors.orange,),
+        ),
+
+        Padding(padding: const EdgeInsets.all(5),
+        child: Container(
+          child: GridView.count(crossAxisCount: 2,
+          crossAxisSpacing: 3,
+            children: [
+              Container(color: Colors.red,),
+              Container(color: Colors.orange,),
+            ],
+          ))
+        ),
+        Padding(padding: const EdgeInsets.all(5),
+        child: Container(color: Colors.purple,),
+        ),
+        Padding(padding: const EdgeInsets.all(5),
+        child: Container(color: Colors.green,),
+        ),
+        Padding(padding: const EdgeInsets.all(5),
+        child: Container(color: Colors.orange,),
+        ),
         
-        direction: Axis.vertical,
-        alignment: WrapAlignment.end,
-        spacing: 11,
-        runSpacing: 11,
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.amber,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: const Color.fromARGB(255, 22, 123, 163),
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: const Color.fromARGB(255, 48, 130, 57),
-          ),Container(
-            height: 100,
-            width: 100,
-            color: const Color.fromARGB(255, 114, 6, 66),
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: const Color.fromARGB(255, 53, 21, 123),
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: const Color.fromARGB(255, 37, 33, 22),
-          ),
-        ],
+      
+      ],
        )
 
+      
+      
     );
   }
 }
