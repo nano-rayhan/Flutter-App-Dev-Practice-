@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_apps/widgets/rounde_btn.dart';
@@ -69,46 +69,41 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: const Color.fromARGB(255, 54, 205, 69),
         actions: [
           IconButton(
-            icon: Icon(Icons.accessibility_outlined), 
+            icon: Icon(Icons.apps_sharp, ),
             onPressed: () {  
             },)],
          title: Text("My App"),
       ),
 
       
-      body:GridView.count(crossAxisCount: 3,
-       
-      children: [
-        Padding(padding: const EdgeInsets.all(5),
-        child: Container(color: Colors.orange,),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: const Color.fromARGB(115, 21, 17, 17),
+        child: Stack(
+          children: [
+             Positioned(
+          top: 20,
+          right: 20,
+          child: Container(
+          height: 100,
+          width: 100,
+          color: Colors.red,
         ),
-
-        Padding(padding: const EdgeInsets.all(5),
-        child: Container(
-          child: GridView.count(crossAxisCount: 2,
-          crossAxisSpacing: 3,
-            children: [
-              Container(color: Colors.red,),
-              Container(color: Colors.orange,),
-            ],
-          ))
         ),
-        Padding(padding: const EdgeInsets.all(5),
-        child: Container(color: Colors.purple,),
-        ),
-        Padding(padding: const EdgeInsets.all(5),
-        child: Container(color: Colors.green,),
-        ),
-        Padding(padding: const EdgeInsets.all(5),
-        child: Container(color: Colors.orange,),
-        ),
+        Positioned(
+          top: 15,
+          right: 15,
+          child: Container(
+          height: 100,
+          width: 100,
+          color: Colors.green,
+        ))
         
-      
-      ],
-       )
-
-      
-      
+          ],
+        )
+        
+      )
     );
   }
 }
