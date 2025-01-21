@@ -36,6 +36,9 @@ class MyHomePage extends StatefulWidget{
 
 class MyHomeState extends State<MyHomePage>{
   var count = 0;
+  var no1Controller = TextEditingController();
+  var no2Controller = TextEditingController();
+  var result = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold (
@@ -54,27 +57,73 @@ class MyHomeState extends State<MyHomePage>{
         
       ),
 
-      body:Center(
+      body: Container(
+        color: Colors.blue.shade100,
+        child:  Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("$count", style: TextStyle(fontSize: 20),),
-              ElevatedButton(onPressed: (){
-                count++;
-                setState(() {
+              TextField(
+                keyboardType: TextInputType.number,
+                controller: no1Controller,
+              ),
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
                   
-                });
-              },
-               child: Icon(Icons.plus_one)),
-               ElevatedButton(onPressed: (){
-                  count = 0;
-                  setState(() {
-                    
-                  });
-               }, child: Icon(Icons.remove))
+                ),
+                controller: no2Controller,
+              ),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: (){
+                    var no1 = int.parse(no1Controller.text.toString());
+                    var no2 = int.parse(no2Controller.text.toString());
+                    var sum = no2 + no1;
+                    result = '$sum';
+                    setState(() {
+                      
+                    });
+                  }, child: Text("Add")),
+                  ElevatedButton(onPressed: (){
+                    var no1 = int.parse(no1Controller.text.toString());
+                    var no2 = int.parse(no2Controller.text.toString());
+                    var sum = no1 - no2;
+                    result = '$sum';
+                    setState(() {
+                      
+                    });
+                  }, child: Text("sub")),
+                  ElevatedButton(onPressed: (){
+                    var no1 = int.parse(no1Controller.text.toString());
+                    var no2 = int.parse(no2Controller.text.toString());
+                    var sum = no2 * no1;
+                    result = '$sum';
+                    setState(() {
+                      
+                    });
+                  }, child: Text("mul")),
+                  ElevatedButton(onPressed: (){
+                    var no1 = int.parse(no1Controller.text.toString());
+                    var no2 = int.parse(no2Controller.text.toString());
+                    var sum = no1 / no2;
+                    result = '$sum';
+                    setState(() {
+                      
+                    });
+                  }, child: Text("div")),
+                  Text(result, style: TextStyle(fontSize: 20),)
+                  
+                ],
+                
+              )
+              
             ],
           ),
-      ),
+        ),
+      )
     );
   }
 }
