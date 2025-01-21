@@ -21,90 +21,60 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-
-  final String title;
-
+class MyHomePage extends StatefulWidget{
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StatefulWidget> createState() {
+    return MyHomeState();
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  callback(){
 
-  }
-  var emailText = TextEditingController();
-  var passText = TextEditingController();
-  int _counter = 0;
-  
-
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class MyHomeState extends State<MyHomePage>{
+  var count = 0;
   @override
   Widget build(BuildContext context) {
-    var arrColor = [Colors.red,
-    Colors.black,
-    Colors.purple,
-    Colors.blue,
-    Colors.orange,
-    Colors.black54];
-    var arrnames = ['Rayhan', 'Rahim', 'Sahed', 'Ashik'];
-    var time = DateTime.now();
-    return Scaffold(
+    return Scaffold (
       appBar: AppBar(
-
-        backgroundColor: const Color.fromARGB(255, 54, 205, 69),
+        title: Text("Stateful"),
+        backgroundColor: Colors.amber,
         actions: [
-          IconButton(
-            icon: Icon(Icons.apps_sharp, ),
-            onPressed: () {  
-            },)],
-         title: Text("My App"),
+          Stack(children: [
+            Positioned(
+          
+            child: Icon(
+            Icons.notification_add))
+          
+          ],)
+        ],
+        
       ),
 
-      
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: const Color.fromARGB(115, 21, 17, 17),
-        child: Stack(
-          children: [
-             Positioned(
-          top: 20,
-          right: 20,
-          child: Container(
-          height: 100,
-          width: 100,
-          color: Colors.red,
-        ),
-        ),
-        Positioned(
-          top: 15,
-          right: 15,
-          child: Container(
-          height: 100,
-          width: 100,
-          color: Colors.green,
-        ))
-        
-          ],
-        )
-        
-      )
+      body:Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("$count", style: TextStyle(fontSize: 20),),
+              ElevatedButton(onPressed: (){
+                count++;
+                setState(() {
+                  
+                });
+              },
+               child: Icon(Icons.plus_one)),
+               ElevatedButton(onPressed: (){
+                  count = 0;
+                  setState(() {
+                    
+                  });
+               }, child: Icon(Icons.remove))
+            ],
+          ),
+      ),
     );
   }
 }
-
