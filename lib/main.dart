@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:my_apps/introPage.dart';
 import 'package:my_apps/widgets/rounde_btn.dart';
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  MyHomePage(),
+      home:  Intropage(),
     );
   }
 }
@@ -48,7 +49,6 @@ class MyHomeState extends State<MyHomePage>{
         actions: [
           Stack(children: [
             Positioned(
-          
             child: Icon(
             Icons.notification_add))
           
@@ -57,73 +57,11 @@ class MyHomeState extends State<MyHomePage>{
         
       ),
 
-      body: Container(
-        color: Colors.blue.shade100,
-        child:  Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                keyboardType: TextInputType.number,
-                controller: no1Controller,
-              ),
-              TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  
-                ),
-                controller: no2Controller,
-              ),
-              SizedBox(height: 10,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(onPressed: (){
-                    var no1 = int.parse(no1Controller.text.toString());
-                    var no2 = int.parse(no2Controller.text.toString());
-                    var sum = no2 + no1;
-                    result = '$sum';
-                    setState(() {
-                      
-                    });
-                  }, child: Text("Add")),
-                  ElevatedButton(onPressed: (){
-                    var no1 = int.parse(no1Controller.text.toString());
-                    var no2 = int.parse(no2Controller.text.toString());
-                    var sum = no1 - no2;
-                    result = '$sum';
-                    setState(() {
-                      
-                    });
-                  }, child: Text("sub")),
-                  ElevatedButton(onPressed: (){
-                    var no1 = int.parse(no1Controller.text.toString());
-                    var no2 = int.parse(no2Controller.text.toString());
-                    var sum = no2 * no1;
-                    result = '$sum';
-                    setState(() {
-                      
-                    });
-                  }, child: Text("mul")),
-                  ElevatedButton(onPressed: (){
-                    var no1 = int.parse(no1Controller.text.toString());
-                    var no2 = int.parse(no2Controller.text.toString());
-                    var sum = no1 / no2;
-                    result = '$sum';
-                    setState(() {
-                      
-                    });
-                  }, child: Text("div")),
-                  Text(result, style: TextStyle(fontSize: 20),)
-                  
-                ],
-                
-              )
-              
-            ],
-          ),
-        ),
-      )
+
+    body: Container(
+      color: Colors.black38,
+      child: Text("Welcome Home page "),
+    )
     );
   }
 }
