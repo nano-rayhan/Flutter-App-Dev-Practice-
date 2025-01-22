@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_apps/introPage.dart';
+import 'package:my_apps/splashScreen.dart';
 import 'package:my_apps/widgets/rounde_btn.dart';
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Intropage(),
+      home:  splashscreen(),
     );
   }
 }
