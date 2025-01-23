@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:my_apps/introPage.dart';
+import 'package:my_apps/main.dart';
 
 class splashscreen extends StatefulWidget
 {
@@ -17,7 +18,7 @@ class _SplashscreenState extends State<splashscreen>{
     super.initState();
     Timer(Duration(seconds: 5), (){
       Navigator.pushReplacement(context, 
-      MaterialPageRoute(builder: (context) => Intropage()));
+      MaterialPageRoute(builder: (context) => MyHomePage()));
     });
   }
   @override
