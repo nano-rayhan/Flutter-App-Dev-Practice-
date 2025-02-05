@@ -26,7 +26,8 @@ class _SplashscreenState extends State<splashscreen>{
     return Scaffold(
       body: Container(
         color: Colors.blue,
-        child: Center(child: Text('Football',style: TextStyle(fontSize: 20),),),
+        
+        child: Image.asset('assets/images/font3.png',fit: BoxFit.cover,),
       ),
     );
   }
