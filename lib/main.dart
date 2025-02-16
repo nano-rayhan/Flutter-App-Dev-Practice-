@@ -9,9 +9,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -37,11 +42,10 @@ class MyHomePage extends StatefulWidget{
 
 
 class MyHomeState extends State<MyHomePage>{
-  var _width = 200.0;
-  var _height = 100.0;
-  bool flag = true;
-  Color bgColor = Colors.blueGrey;
-  
+
+  var myOpacity = 1.0;
+  bool isvisible = true;
+
   @override
   Widget build(BuildContext context) {
     
@@ -63,37 +67,28 @@ class MyHomeState extends State<MyHomePage>{
 
     body: Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          
+          AnimatedOpacity(opacity: myOpacity, curve: Curves.slowMiddle, duration: Duration(seconds: 2), 
+          child:  Container(
+            width: 200,
+            height: 100,
+            color: Colors.blue,
+          ),),
+          ElevatedButton(onPressed: (){
             
-            AnimatedContainer(duration: Duration(seconds: 1),
-                  height: _height,
-                  width: _width,
-                  
-                  color: bgColor,
-              
-              ),
-              ElevatedButton(onPressed: (){
-                
-                setState(() {
-                  if(flag){
-                    _width = 100.0;
-                    _height = 200.0;
-                    bgColor = Colors.orange;
-                    flag = false;
-                  }
-                  else{
-                    _width = 200.0;
-                    _height = 100.0;
-                    bgColor = Colors.blueGrey;
-                    flag  = true;
-                  }
-                });
-              }, child: Text('Click')),
-                
-              
-            
-          
+            setState(() {
+              if(isvisible){
+                myOpacity =  0.0;
+                isvisible = false;
+              }
+              else{
+                myOpacity = 1.0;
+                isvisible = true;
+              }
+            });
+          },
+           child: Text('Colse'))
         ],
       ),
     ) 
