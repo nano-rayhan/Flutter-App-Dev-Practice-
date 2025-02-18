@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,22 @@ class MyHomePage extends StatefulWidget{
 class MyHomeState extends State<MyHomePage>{
 
   var myOpacity = 1.0;
-  bool isvisible = true;
+  bool isFirst = true;
+
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Timer(Duration(seconds: 4),(){
+      reload();
+    });
+  }
+  void reload(){
+    setState(() {
+      isFirst = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,31 +83,33 @@ class MyHomeState extends State<MyHomePage>{
 
     body: Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AnimatedOpacity(opacity: myOpacity, curve: Curves.slowMiddle, duration: Duration(seconds: 2), 
-          child:  Container(
+          AnimatedCrossFade(firstChild: Container(
             width: 200,
-            height: 100,
-            color: Colors.blue,
-          ),),
-          ElevatedButton(onPressed: (){
+            height: 200,
+            color: Colors.grey.shade200,
+          ),
+           secondChild: Image.asset('assets/images/flutter.png',height: 200, width: 200,),
             
-            setState(() {
-              if(isvisible){
-                myOpacity =  0.0;
-                isvisible = false;
-              }
-              else{
-                myOpacity = 1.0;
-                isvisible = true;
-              }
-            });
-          },
-           child: Text('Colse'))
+           crossFadeState: isFirst ? CrossFadeState.showFirst: CrossFadeState.showSecond , 
+           duration: Duration(seconds: 2),
+           secondCurve: Curves.bounceOut,),
+
+           ElevatedButton(onPressed: (){
+            if(isFirst){
+              reload();
+              isFirst = false;
+            }
+            else{
+              reload();
+              isFirst = true;
+            }
+            
+           }, child: Text('Show')),
         ],
       ),
-    ) 
+    ),
+     
     
     );
   }
