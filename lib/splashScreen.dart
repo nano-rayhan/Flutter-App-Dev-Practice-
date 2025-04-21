@@ -6,6 +6,8 @@ import 'package:my_apps/main.dart';
 
 class splashscreen extends StatefulWidget
 {
+  const splashscreen({super.key});
+
   @override
   State<StatefulWidget> createState(){
     return _SplashscreenState();
@@ -16,7 +18,7 @@ class _SplashscreenState extends State<splashscreen>{
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), (){
+    Timer(const Duration(seconds: 5), (){
       Navigator.pushReplacement(context, 
       MaterialPageRoute(builder: (context) => MyHomePage()));
     });

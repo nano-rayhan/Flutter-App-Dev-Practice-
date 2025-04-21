@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/user/Desktop/Flutter projects/my_apps/linux"
+    "cmake.sourceDirectory": "C:/Users/user/Desktop/Flutter projects/my_apps/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -35,6 +35,8 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget{
+  const MyHomePage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return MyHomeState();
@@ -52,7 +54,7 @@ class MyHomeState extends State<MyHomePage>{
     // TODO: implement initState
     super.initState();
 
-    Timer(Duration(seconds: 4),(){
+    Timer(const Duration(seconds: 4),(){
       reload();
     });
   }
@@ -67,9 +69,9 @@ class MyHomeState extends State<MyHomePage>{
     
     return Scaffold (
       appBar: AppBar(
-        title: Text("Note"),
+        title: const Text("Note"),
         backgroundColor: Colors.amber,
-        actions: [
+        actions: const [
           Stack(children: [
             Positioned(
             child: Icon(
@@ -81,34 +83,43 @@ class MyHomeState extends State<MyHomePage>{
       ),
 
 
-    body: Center(
-      child: Column(
-        children: [
-          AnimatedCrossFade(firstChild: Container(
-            width: 200,
-            height: 200,
-            color: Colors.grey.shade200,
+    body: ListWheelScrollView(itemExtent: 100,
+     children: 
+        [
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
           ),
-           secondChild: Image.asset('assets/images/flutter.png',height: 200, width: 200,),
-            
-           crossFadeState: isFirst ? CrossFadeState.showFirst: CrossFadeState.showSecond , 
-           duration: Duration(seconds: 2),
-           secondCurve: Curves.bounceOut,),
-
-           ElevatedButton(onPressed: (){
-            if(isFirst){
-              reload();
-              isFirst = false;
-            }
-            else{
-              reload();
-              isFirst = true;
-            }
-            
-           }, child: Text('Show')),
-        ],
-      ),
-    ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blue,
+          ),
+        ]
+     )
      
     
     );
